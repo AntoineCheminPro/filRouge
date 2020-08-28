@@ -8,7 +8,10 @@ httpRequest.onreadystatechange = function() {
             // la réponse est exploitable et valide
             // on affiche la réponse sur la page
             // put the function
+
+            // Demander à Thomas de m'expliquer cette ligne
             let stats = JSON.parse(httpRequest.responseText);
+            
             const tbody = document.getElementById("list");
             const thead = document.getElementById("headList");
             const tr = document.createElement("tr");
@@ -21,7 +24,6 @@ httpRequest.onreadystatechange = function() {
                     thead.appendChild(th);
                     tbody.appendChild(tr);
                 }
-                
             } 
         else {
             // il y a eu un problème avec la requête,

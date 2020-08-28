@@ -91,11 +91,15 @@ textarea {
      z-index: 10;
    }
 
+   main{
+     min-height: 50vh;
+   }
+
    #overlay {
     position: absolute; 
     display: block;
-    width: 70vw;
-    height: 20vw; 
+    width: 50%;
+    height: auto; 
     z-index: 1;
   }
 
