@@ -12,6 +12,8 @@
   <meta property="og:url" content="">
   <meta property="og:image" content="">
 
+<!--load fontawesome -->
+  <!-- <script defer src="/your-path-to-fontawesome/js/all.js"></script>  -->
 
   <!--load BOOTSTRAP 4.5.2 -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -30,7 +32,7 @@
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light text-secondary mb-2 ">
-    <a class="navbar-brand bg-warning rounded-pill" href="#">se connecter</a>
+    <a class="navbar-brand bg-warning rounded-pill href="#">se connecter</a>
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -62,45 +64,32 @@
 
   
   <main class="container">
+<section class="container row" id="blog">
 
-    <div id="overlay" class="bg-light">
-      <h2 class="center">Attention aux risques de fraudes</h2>
-      <p id="textualWarning"></p>
-      <button class="navbar-toggler bg-warning rounded-pill justify-content-around" onclick="off()">J'ai compris</button>
+  <article class="card col-5 m-4">
+    <div class="card-header bg-warning rounded-pill">
+      Article 1
     </div>
+    <div class="card-body">
+      <blockquote class="blockquote">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates, harum. Voluptatibus, rem, illo debitis, molestias natus nesciunt facilis voluptate reiciendis labore error non? Sint maxime enim id consequuntur architecto minima.</p>
+      </blockquote>
+    </div>
+  </article>
 
-<div class="row justify-content-around">
+  <article class="card col-5 m-4">
+    <header class="card-header bg-warning rounded-pill">
+      Article 2
+    </header>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates, harum. Voluptatibus, rem, illo debitis, molestias natus nesciunt facilis voluptate reiciendis labore error non? Sint maxime enim id consequuntur architecto minima.</p>
+      </blockquote>
+    </div>
+  </article>
 
-    <article class="card text-white bg-info my-4 px-0 col-4" style="max-width: 18rem;">
-      <div class="card-header text-center">Compte courant M et Mme</div>
-      <div class="card-body bg-white">
-        <h5 class="card-title text-warning text-center">Solde : 1000 €</h5>
-        <p class="card-text text-dark">Sous reserve des opérations en cours de traitement.</p>
-        <button type="button" class="btn btn-warning">Consulter</button>
-      </div>
-    </article>
-
-    <article class="card text-white bg-info my-4 px-0 col-4" style="max-width: 18rem;">
-      <div class="card-header text-center">Compte courant</div>
-      <div class="card-body bg-white">
-        <h5 class="card-title text-warning text-center">Solde : 1000 €</h5>
-        <p class="card-text text-dark">Sous reserve des opérations en cours de traitement.</p>
-        <button type="button" class="btn btn-warning">Consulter</button>
-      </div>
-    </article>
-
-    <article class="card text-white bg-info my-4 px-0 col-4" style="max-width: 18rem;">
-      <div class="card-header text-center">Livret A</div>
-      <div class="card-body bg-white">
-        <h5 class="card-title text-warning text-center">Solde : 1000 €</h5>
-        <p class="card-text text-dark">Sous reserve des opérations en cours de traitement.</p>
-        <button type="button" class="btn btn-warning">Consulter</button>
-      </div>
-    </article>
-
+</section>
     
-
-  </div>
   </main>
 
 <!-- footer  -->
@@ -156,7 +145,7 @@
   <!-- Add your site or application content here -->
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
-  <script src="js/main2.js"></script>
+  <script src="js/blog.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
