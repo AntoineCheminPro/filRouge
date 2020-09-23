@@ -1,79 +1,4 @@
-<!doctype html>
-<html class="no-js" lang="Fr">
-
-<head>
-  <meta charset="utf-8">
-  <title>La banque Normande</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-
-<!--load fontawesome -->
-  <!-- <script defer src="/your-path-to-fontawesome/js/all.js"></script>  -->
-
-  <!--load BOOTSTRAP 4.5.2 -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-  
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main2.css">
-
-  <meta name="theme-color" content="#fafafa">
-</head>
-
-<body>
-
-  <nav class="navbar navbar-expand-lg navbar-light text-secondary mb-2 ">
-    <a class="navbar-brand bg-warning rounded-pill href="#">se connecter</a>
-    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="justify-content-between" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link text-secondary" href="index.html">Acceuil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-secondary" href="#">Création de compte</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-secondary" href="statistics.html">Statistiques</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-secondary" href="blog.html">Blog</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <header class="jumbotron jumbotron-fluid text-white bg-info container mb-0 border-bottom ">
-    <div class="container">
-      <h1 class="display-4">La Banque Normande</h1>
-      <p class="lead">La banque qui mets vos sous de côté !</p>
-    </div>
-  </header>
-
-  
-  <main class="container p-0">
-
-    <!-- create table -->
-    <table class="table mt-4">
-      <thead class="thead-dark" id="headList">
-      </thead>
-      <tbody id="list">
-      </tbody>
-    </table>
-  </main>
-
+</main>
 <!-- footer  -->
   <footer class=" pt-4 pt-md-5 border-top bg-dark text-white">
 
@@ -127,7 +52,7 @@
   <!-- Add your site or application content here -->
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
-  <script src="js/statistics.js"></script>
+  <script src="js/main2.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
