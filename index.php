@@ -1,4 +1,7 @@
 <?php require "template/header.php"; ?>
+<?php require_once "data/users.php"; ?>
+<?php require_once "data/acounts.php"; ?>
+
 
 <main class="container">
   <div id="overlay">
@@ -9,6 +12,27 @@
 
 <div class="row justify-content-around">
 
+<?php 
+
+foreach ($people as $key => $value):
+?>
+    <p> Nom : <?php echo $value['name'] ?> " || Poste : " <?php echo $value['status'] ?></p>
+    <a href='single.php?name=<?php echo$value["name"]?>'>voir</a>
+
+<?php
+
+<article class="card text-white bg-info my-4 px-0 col-4" style="max-width: 18rem;">
+<div class="card-header text-center">Compte courant M et Mme</div>
+<div class="card-body bg-white">
+  <h5 class="card-title text-warning text-center">Solde : 1000 €</h5>
+  <p class="card-text text-dark">Sous reserve des opérations en cours de traitement.</p>
+  <button type="button" class="btn btn-warning">Consulter</button>
+</div>
+</article>
+
+endforeach 
+
+?>
 
 
     <!-- <article class="card text-white bg-info my-4 px-0 col-4" style="max-width: 18rem;">
