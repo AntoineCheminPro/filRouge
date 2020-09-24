@@ -99,12 +99,29 @@ textarea {
     position: absolute;
     background-color: white;
     border : 2px solid black;
+    top : 25%;
+    left : 25%;
     width: 50%;
     padding: 50px;
-    margin: 0 10%;
-    z-index: 1;
+    z-index: 200;
+    opacity: 1;
   }
 
+  #layer {
+    position: fixed;
+    top : 0;
+    left : 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index : 100;
+    opacity: 0.5;
+  }
+
+  .logo {
+    height: 10rem;
+    width: auto;
+  }
 
 
 /* ==========================================================================

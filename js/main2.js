@@ -1,6 +1,6 @@
   function off() {
+    document.getElementById("layer").style.display = "none";
     document.getElementById("overlay").style.display = "none";
-    console.log("tuned OFF");
 
 }
 
