@@ -18,21 +18,19 @@
 <?php foreach ($acounts as $key => $value): ?>
 
 <article class="card text-white bg-info my-4 px-0 col-4" style="max-width: 18rem;">
-  <div class="card-header text-center"><?php echo $value["name"]?> <?php echo $value["owner"]?></div>
+  <div class="card-header text-center"><?php echo $value["name"]?><br> <?php echo $value["owner"]?></div>
   <div class="card-header text-center">Numéro : <?php echo $value["number"]?></div>
   <div class="card-body bg-white">
     <h5 class="card-title text-warning text-center">Solde : <?php echo $value["amount"] ?> €</h5>
     <p class="card-text text-dark">Sous reserve des opérations en cours de traitement.</p>
-    <p class="card-text text-dark">Derniére opération : <?php echo $value["last_operation"]?></p>
-    <button type="button" class="btn btn-warning">Consulter</button>
+    <p class="card-text text-dark">Derniére opération :<br> <?php echo $value["last_operation"]?></p>
+    <div class="text-center">
+      <a type="button" class="btn btn-warning text-center" href="<?php echo 'acountinfo.php?name='.$value["name"]
+      .'&number='.$value["number"].'&lastop='.$value["last_operation"].'&owner='.$value["owner"].'&amount='.$value["amount"]?>">Consulter</a>
+    </div>
   </div>
 </article>
 
 <?php endforeach ?>
 
-
-    
-
-  </div>
-
-  <?php require "template/footer.php"; ?>
+<?php require "template/footer.php"; ?>

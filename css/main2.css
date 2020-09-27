@@ -118,11 +118,17 @@ textarea {
     opacity: 0.5;
   }
 
+  #createAcount{
+width : 95%;
+  }
   .logo {
     height: 10rem;
     width: auto;
   }
 
+  .hide {
+    display : none;
+  }
 
 /* ==========================================================================
    Helper classes
