@@ -10,7 +10,7 @@
           <a class="nav-link text-secondary" href="index.php">Acceuil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-secondary" href="#">Création de compte</a>
+          <a class="nav-link text-secondary" href="acountcreation.php">Création de compte</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-secondary" href="statistics.php">Statistiques</a>
