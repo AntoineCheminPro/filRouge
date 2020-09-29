@@ -9,11 +9,11 @@ $infos = ["firstname","lastname","typeOfAccount","amount"];
 
 // test infos
 foreach($infos as $key => $value) :
-  $$value="";
+  $$value="donnée absente";
   if(isset($_POST[$value]) && !empty($_POST[$value])){
     $$value=htmlspecialchars($_POST[$value]);
 }
-endforeach
+endforeach;
 ?>
 
 <section class="row">
@@ -44,11 +44,11 @@ endforeach
       <label>Montant déposé (€)</label>
       <input type="number" class="form-control" name="amount" placeholder="50 minimum">
     </div>
-    <button type="submit" class="btn btn-warning text-center">Créer le compte</button>
+    <button type="submit" class="btn btn-warning text-center" name="createAcount">Créer le compte</button>
 </form>
 
 <?php 
-  if($amount >= 50){ 
+  if(isset($_POST["createAcount"])){ 
     ?>
     <!-- show the account -->
     <article class="card text-white bg-info my-4 px-0 col-3" style="max-width: 18rem;">

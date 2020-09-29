@@ -25,8 +25,8 @@
     <p class="card-text text-dark">Sous reserve des opérations en cours de traitement.</p>
     <p class="card-text text-dark">Derniére opération :<br> <?php echo $value["last_operation"]?></p>
     <div class="text-center">
-      <a type="button" class="btn btn-warning text-center" href="<?php echo 'acountinfo.php?name='.$value["name"]
-      .'&number='.$value["number"].'&lastop='.$value["last_operation"].'&owner='.$value["owner"].'&amount='.$value["amount"]?>">Consulter</a>
+      <a class="btn btn-warning text-center" href="<?php echo 'acountinfo.php?name='.$value["name"]
+      .'</h1>&number='.$value["number"].'&lastop='.$value["last_operation"].'&owner='.$value["owner"].'&amount='.$value["amount"]?>">Consulter</a>
     </div>
   </div>
 </article>

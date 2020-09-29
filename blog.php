@@ -27,5 +27,9 @@
 
 </section>
 
-<?php require "template/footer.php"; ?>
-<script src="js/blog.js"></script>
+
+
+<?php 
+$script ="<script src='js/blog.js'></script>";
+require "template/footer.php"; 
+?>

@@ -1,7 +1,6 @@
   function off() {
     document.getElementById("layer").style.display = "none";
     document.getElementById("overlay").style.display = "none";
-
 }
 
 // Étape 1 — Lancement d’une requête HTTP
