@@ -2,15 +2,16 @@
 <?php require_once "data/users.php"; ?>
 <?php require_once "data/acounts.php"; ?>
 
-
 <main class="container">
-  <div id="layer">
+
+<div id="layer">
+</div>
+  <div id="overlay">
+    <h2 class="center">Attention aux risques de fraudes</h2>
+    <p id="textualWarning"></p>
+    <button class="navbar-toggler bg-warning rounded-pill justify-content-around" onclick="off()">J'ai compris</button>
   </div>
-    <div id="overlay">
-      <h2 class="center">Attention aux risques de fraudes</h2>
-      <p id="textualWarning"></p>
-      <button class="navbar-toggler bg-warning rounded-pill justify-content-around" onclick="off()">J'ai compris</button>
-    </div>
+ 
 
 <div class="row justify-content-around">
 <?php $acounts = get_accounts(); ?>
@@ -25,12 +26,11 @@
     <p class="card-text text-dark">Sous reserve des opérations en cours de traitement.</p>
     <p class="card-text text-dark">Derniére opération :<br> <?php echo $value["last_operation"]?></p>
     <div class="text-center">
-      <a class="btn btn-warning text-center" href="<?php echo 'acountinfo.php?name='.$value["name"]
-      .'</h1>&number='.$value["number"].'&lastop='.$value["last_operation"].'&owner='.$value["owner"].'&amount='.$value["amount"]?>">Consulter</a>
+      <a class="btn btn-warning text-center" href="acountinfo.php<?php echo "?id=$key"; ?>">Consulter</a>
     </div>
   </div>
 </article>
 
 <?php endforeach ?>
-
+</div>
 <?php require "template/footer.php"; ?>

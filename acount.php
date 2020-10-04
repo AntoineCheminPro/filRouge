@@ -1,6 +1,8 @@
 <?php require "template/header.php"; ?>
 <?php require_once "data/acounts.php"; ?>
 
+
+
 <?php 
 
 $content ="rien à afficher";
