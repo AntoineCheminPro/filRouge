@@ -1,3 +1,4 @@
+<?php require "template/nav.php"; ?>
 <?php require "template/header.php"; ?>
   
   <main class="container p-0">

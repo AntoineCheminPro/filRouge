@@ -3,8 +3,8 @@
     document.getElementById("overlay").style.display = "none";
 }
 
-// Étape 1 — Lancement d’une requête HTTP
 
+// Étape 1 — Lancement d’une requête HTTP pour récupérer le texte à afficher
 httpRequest = new XMLHttpRequest();
 
 httpRequest.onreadystatechange = function() {
@@ -30,4 +30,3 @@ httpRequest.onreadystatechange = function() {
 // ouverture et envoi de la requête
 httpRequest.open('GET', 'warning.txt', true);
 httpRequest.send();
-

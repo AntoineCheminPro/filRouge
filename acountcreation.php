@@ -1,4 +1,8 @@
+<?php require "template/nav.php"; ?>
 <?php require "template/header.php"; ?>
+<?php require "template/nav.php"; ?>
+
+
 <!-- set the main class for this page-->
 <main class="container">
 
