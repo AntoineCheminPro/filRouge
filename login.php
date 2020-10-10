@@ -24,7 +24,7 @@ if (!empty ($_POST) && isset($_POST["login"])) {
     }
     // never trust user input -> preparer la requête
     $query = $db->prepare(
-        "SELECT * FROM User
+        "SELECT id, email, password, lastname, firstname, sex FROM User
         WHERE email = :email"
     );
     $query->execute([

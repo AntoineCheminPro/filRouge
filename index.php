@@ -23,6 +23,7 @@ try{
     die();
 }
 
+// var_dump ($_SESSION['user']);
 $userID= intval($_SESSION['user']["id"]);
 
 // load user accounts from DB

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : Dim 04 oct. 2020 à 17:35
+-- Généré le : mer. 07 oct. 2020 à 16:45
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.9
 
@@ -28,50 +28,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `account` (
-  `AccountID` int(15) NOT NULL,
-  `ownerID` int(30) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `amount` float NOT NULL,
-  `CreationDate` date NOT NULL,
-  `Rate` int(2) NOT NULL,
-  `DiscoveredMax` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int(10) UNSIGNED NOT NULL,
+  `amount` decimal(11,2) NOT NULL,
+  `opening_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `account_type` varchar(50) NOT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `account`
 --
 
-INSERT INTO `account` (`AccountID`, `ownerID`, `type`, `amount`, `CreationDate`, `Rate`, `DiscoveredMax`) VALUES
-(1, 1, 'compte courant', 1000, '2020-10-04', 0, 1000),
-(2, 1, 'livret A', 200, '2020-10-04', 1, 0);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `customer`
---
-
-CREATE TABLE `customer` (
-  `CustomerID` int(11) NOT NULL,
-  `Password` varchar(20) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Firstname` varchar(50) NOT NULL,
-  `Lastname` varchar(50) NOT NULL,
-  `Birth` date NOT NULL,
-  `Adress` varchar(100) NOT NULL,
-  `City` varchar(50) NOT NULL,
-  `PostalCode` mediumint(6) NOT NULL,
-  `Phone` varchar(15) NOT NULL,
-  `Category` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `customer`
---
-
-INSERT INTO `customer` (`CustomerID`, `Password`, `Email`, `Firstname`, `Lastname`, `Birth`, `Adress`, `City`, `PostalCode`, `Phone`, `Category`) VALUES
-(1, '', 'antoine.chemin@free.fr', 'Chemin', 'Antoine', '0000-00-00', '25 rue du terrain', 'rouen', 76100, '0620961766', ''),
-(3, 'motdepasse', 'agnesnomrandie@hotmail.com', 'Chemin', 'Agnes', '0000-00-00', '25 rue du terrain', 'rouen', 76100, '0606060606', '');
+INSERT INTO `account` (`id`, `amount`, `opening_date`, `account_type`, `user_id`) VALUES
+(1, '596.23', '2020-10-05 09:15:12', 'Compte courant', 1),
+(2, '12345.00', '2020-10-05 09:15:12', 'Livret A', 1),
+(3, '500.00', '2020-10-05 09:15:12', 'PEL', 1),
+(4, '-56.78', '2020-10-05 09:15:12', 'Compte courant', 2),
+(5, '200.00', '2020-10-05 12:42:09', 'livret A', 1);
 
 -- --------------------------------------------------------
 
@@ -80,21 +53,50 @@ INSERT INTO `customer` (`CustomerID`, `Password`, `Email`, `Firstname`, `Lastnam
 --
 
 CREATE TABLE `operation` (
-  `operationID` int(15) NOT NULL,
-  `account` int(15) NOT NULL,
-  `typeOf` varchar(30) NOT NULL,
-  `date` date NOT NULL,
-  `amount` int(15) NOT NULL,
-  `allowed` varchar(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int(10) UNSIGNED NOT NULL,
+  `operation_type` varchar(30) NOT NULL,
+  `amount` decimal(11,2) NOT NULL,
+  `registered` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `label` varchar(50) DEFAULT NULL,
+  `account_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `operation`
 --
 
-INSERT INTO `operation` (`operationID`, `account`, `typeOf`, `date`, `amount`, `allowed`) VALUES
-(1, 1, 'retrait', '2020-10-04', 100, 'yes'),
-(2, 2, 'depot', '0000-00-00', 100, 'yes');
+INSERT INTO `operation` (`id`, `operation_type`, `amount`, `registered`, `label`, `account_id`) VALUES
+(1, 'débit', '-15.60', '2020-10-05 09:15:12', 'le poulet d\'or SARL', 1),
+(2, 'crédit', '500.00', '2020-10-05 09:15:12', NULL, 2),
+(3, 'débit', '-7.62', '2020-10-05 09:15:12', 'carrefour essence', 1),
+(4, 'débit', '-50.00', '2020-10-05 09:15:12', 'frais de gestion', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `city_code` char(5) NOT NULL,
+  `adress` varchar(50) NOT NULL,
+  `sex` char(1) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `birth_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `lastname`, `firstname`, `email`, `city`, `city_code`, `adress`, `sex`, `password`, `birth_date`) VALUES
+(1, 'Dupont', 'Richard', 'r.dupont@gmail.com', 'Rouen', '76000', '9 rue du gros horloge', 'h', '$2y$10$UHuchDFaKZsXttavIk13pue2FqClHp7zUtbHx5jSAF52CswmAPB6G', '1962-05-21'),
+(2, 'Melez', 'Claire', 'clairemelez@outlook.com', 'Lille', '59100', '45 rue du Molinel', 'f', 'AstraGirl154', '1989-11-14');
 
 --
 -- Index pour les tables déchargées
@@ -104,19 +106,22 @@ INSERT INTO `operation` (`operationID`, `account`, `typeOf`, `date`, `amount`, `
 -- Index pour la table `account`
 --
 ALTER TABLE `account`
-  ADD PRIMARY KEY (`AccountID`);
-
---
--- Index pour la table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`CustomerID`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Index pour la table `operation`
 --
 ALTER TABLE `operation`
-  ADD PRIMARY KEY (`operationID`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `account_id` (`account_id`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -126,19 +131,35 @@ ALTER TABLE `operation`
 -- AUTO_INCREMENT pour la table `account`
 --
 ALTER TABLE `account`
-  MODIFY `AccountID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `operation`
 --
 ALTER TABLE `operation`
-  MODIFY `operationID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `account`
+--
+ALTER TABLE `account`
+  ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Contraintes pour la table `operation`
+--
+ALTER TABLE `operation`
+  ADD CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
