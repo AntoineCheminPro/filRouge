@@ -57,8 +57,9 @@ if (!empty ($_POST) && isset($_POST["login"])) {
     <div class="dropdown-divider container"></div>
       <button type="submit" name="login" class="bg-warning rounded-pill p-2 col-5">Se connecter</button>
       <button class="bg-warning rounded-pill p-2 col-5" href="#">S'inscrire</button>
-  </div>
+    </div>
   </form>
+</div>
 
 <?php require "template/footer.php"; ?>
 <script src="js/main2.js"></script>

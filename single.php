@@ -3,7 +3,9 @@
 
 <?php require "data/acounts.php"; ?>
 <!-- set the main class for this page-->
+
 <main class="container">
+
 <?php 
 session_start();
 if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
