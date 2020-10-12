@@ -1,6 +1,7 @@
 <?php require "template/header.php"; ?>
 <?php require_once "data/users.php"; ?>
-<?php require_once "data/acounts.php";?>
+<?php require "connexion.php"; ?>
+
 
 <main class="container">
 <!-- set layer -->
@@ -14,14 +15,6 @@
 <?php 
 //  if a login form is submitted
 if (!empty ($_POST) && isset($_POST["login"])) {
-    // connect to database
-    try{
-        $db = new PDO('mysql:host=localhost;dbname=banque_php', 'BanquePHP', 'banque76');
-    
-    } catch (PDOException $e){
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        die();
-    }
     // never trust user input -> preparer la requête
     $query = $db->prepare(
         "SELECT id, email, password, lastname, firstname, sex FROM User
@@ -38,6 +31,7 @@ if (!empty ($_POST) && isset($_POST["login"])) {
             session_start();
             $_SESSION['user']=$user;
             header("Location: index.php");
+            exit();
         }
     }
 }

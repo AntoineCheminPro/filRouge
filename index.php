@@ -1,45 +1,24 @@
 <?php require "template/nav.php"; ?>
 <?php require "template/header.php"; ?>
 <?php require_once "data/users.php"; ?>
-<?php require_once "data/acounts.php"; ?>
+<?php require "accountModel.php"; ?>
+<?php require "connexion.php"; ?>
+<?php require "session.php"; ?>
 
 <main class="container">
-
 <div class="row justify-content-around">
 
 <!-- start page by loading session -->
 <?php 
-session_start();
-if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
-    header("Location: login.php");
-}
-
-// connect to database
-try{
-    $db = new PDO('mysql:host=localhost;dbname=banque_php', 'BanquePHP', 'banque76');
-
-} catch (PDOException $e){
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
-}
 
 // var_dump ($_SESSION['user']);
 $userID= intval($_SESSION['user']["id"]);
 
-// load user accounts from DB
-$query = $db -> query(
-  "SELECT * 
-FROM User AS u
-INNER JOIN Account AS a
-ON u.id = a.user_id
-WHERE u.id = $userID
-"
-);
-// Extract data from query as an associative array (fetch quand 1 seul, renvoi un tableau associatif et non pas un tableau dans un tableau)
-$accounts = $query -> fetchAll(PDO::FETCH_ASSOC);
+$accounts = get_accounts($db, $userID);
 
 // create an article for each account owned by user
 foreach ($accounts as $key => $value): 
+  // var_dump($value);
   $genre=($value['sex']=="h" ? "M" : "Mme");
   ?>
 

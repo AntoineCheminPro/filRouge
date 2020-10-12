@@ -1,21 +1,13 @@
 <?php require "template/nav.php"; ?>
 <?php require "template/header.php"; ?>
-
+<?php require "connexion.php"; ?>
+<?php require "session.php"; ?>
+<?php require "accountModel.php"; ?>
 
 <!-- set the main class for this page-->
 <main class="container">
 
 <?php 
-session_start();
-
-// connect to database
-try{
-  $db = new PDO('mysql:host=localhost;dbname=banque_php', 'BanquePHP', 'banque76');
-
-} catch (PDOException $e){
-  print "Erreur !: " . $e->getMessage() . "<br/>";
-  die();
-}
 
 // set the requested infos by url 
 $infos = ["typeOfAccount","amount"];
@@ -56,30 +48,25 @@ endforeach;
 
 <?php 
 
-$user_id = $_SESSION["user"]["id"];
-$queryAccountType = $db ->query(
-  "SELECT account_type
-  FROM Account
-  WHERE user_id = $user_id 
-  "
-);
-$accountsOwned = $queryAccountType -> fetchAll(PDO::FETCH_ASSOC);
+$userID = $_SESSION["user"]["id"];
 
-
+$accountsOwned = get_accounts_types($db, $userID);
+var_dump($accountsOwned);
 
   if(isset($_POST)&& !empty($_POST)){
+    $doublon=false;
     foreach($accountsOwned as $key => $value){
-      $doublon=false;
       if(in_array($_POST["typeOfAccount"],$value)){
         $doublon=true;
       }
     }
+    var_dump($doublon);
     if (intval($_POST["amount"])<50){
       ?>
       <p class="btn-danger col-3 text-center"> <?php  echo "montant minimum 50 euros"; ?></p>
      <?php
     } 
-    elseif ( (($_POST["typeOfAccount"] !== "Compte courant") || ($_POST ["typeOfAccount"] !== "Compte commun")) && $doublon ) {
+    elseif (($_POST["typeOfAccount"] !== "Compte courant") && ($_POST ["typeOfAccount"] !== "Compte commun") && $doublon ) {
       ?>
       <p class="btn-danger col-3 text-center"> <?php  echo "Vous ne pouvez pas posséder plusieurs comptes de ce type"; ?></p>
      <?php
