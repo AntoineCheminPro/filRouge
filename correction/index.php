@@ -4,6 +4,7 @@ require "model/accountModel.php";
 session_start();
 if(!isset($_SESSION["user"])) {
   header("Location: login.php");
+  exit();
 }
 
 // Get all the accounts with the last operation

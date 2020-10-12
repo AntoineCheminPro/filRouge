@@ -18,7 +18,7 @@ include "view/template/header.php";
           <li class="list-group-item">Solde : <?php echo $account["amount"]; ?></li>
           <li class="list-group-item">Dernière opération : <?php echo $account["label"] . " " . $account["operation_amount"] . " le " . $account["registered"]; ?></li>
         </ul>
-        <a href="#" class="btn btn-info">Côturer</a>
+        <a href="#" class="btn btn-info">Clôturer</a>
         <a href="operation.php" class="btn btn-info">Dépot/retrait</a>
         <a href="single.php?id=<?php echo $account['id']; ?>" class="btn btn-info">Voir</a>
       </div>

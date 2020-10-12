@@ -17,8 +17,8 @@ include "template/header.php";
     <label for="account_id">Choisissez votre compte</label>
     <select class="form-control" id="account_id" name="account_id">
       <?php foreach ($account_list as $account): ?>
-      <option value='<?php echo $account['id']?>'><?php echo "Nr : " . $account["id"] . " " . $account["account_type"] . " (" . $account["amount"] . ")" ?></option>
-    <?php endforeach; ?>
+        <option value='<?php echo $account['id']?>'><?php echo "Nr : " . $account["id"] . " " . $account["account_type"] . " (" . $account["amount"] . ")" ?></option>
+      <?php endforeach; ?>
     </select>
   </div>
   <div class="form-group">
