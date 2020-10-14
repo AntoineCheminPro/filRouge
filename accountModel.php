@@ -20,7 +20,7 @@ return $query -> fetchAll(PDO::FETCH_ASSOC);
 function get_single_account (PDO $db, int $accountID, $user){
 // load selected account from db
   $query = $db -> prepare(
-      "SELECT a.id, a.amount as sold, o.id, o.operation_type, a.account_type, o.amount, o.label 
+      "SELECT a.id as id, a.amount as sold, o.id as operation_id, o.operation_type, a.account_type, o.amount, o.label 
         FROM Account AS a
         LEFT JOIN Operation AS o
         ON a.id = o.account_id
@@ -60,5 +60,15 @@ function create_account(PDO $db, int $userID){
     "id" => $_SESSION["user"]["id"]
   ]);
   return $query -> fetchAll(PDO::FETCH_ASSOC);
+}
+
+function suppressAccount (PDO $db, int $accountID){
+  $query = $db ->prepare(
+    "DELETE FROM Account
+    WHERE id = :account_id
+  ");
+  $result = $query->execute([
+    "account_id" => $accountID
+    ]);
 }
 ?>

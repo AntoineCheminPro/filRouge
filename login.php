@@ -5,14 +5,10 @@
 
 <main class="container">
 <!-- set layer -->
-<div id="layer"></div>
-<div id="overlay">
-  <h2 class="center">Attention aux risques de fraudes</h2>
-  <p id="textualWarning"></p>
-  <button class="navbar-toggler bg-warning rounded-pill justify-content-around" onclick="off()">J'ai compris</button>
-</div>
-
+<?php require "layer.php" ?>
 <?php 
+setLayer();
+
 //  if a login form is submitted
 if (!empty ($_POST) && isset($_POST["login"])) {
     // never trust user input -> preparer la requête
@@ -56,4 +52,4 @@ if (!empty ($_POST) && isset($_POST["login"])) {
 </div>
 
 <?php require "template/footer.php"; ?>
-<script src="js/main2.js"></script>
+
