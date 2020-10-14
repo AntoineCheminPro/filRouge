@@ -51,16 +51,14 @@ endforeach;
 $userID = $_SESSION["user"]["id"];
 
 $accountsOwned = get_accounts_types($db, $userID);
-var_dump($accountsOwned);
 
-  if(isset($_POST)&& !empty($_POST)){
+if(isset($_POST)&& !empty($_POST)){
     $doublon=false;
     foreach($accountsOwned as $key => $value){
       if(in_array($_POST["typeOfAccount"],$value)){
         $doublon=true;
       }
     }
-    var_dump($doublon);
     if (intval($_POST["amount"])<50){
       ?>
       <p class="btn-danger col-3 text-center"> <?php  echo "montant minimum 50 euros"; ?></p>
@@ -86,17 +84,7 @@ var_dump($accountsOwned);
       </article>
       <?php
 
-// var_dump($_SESSION["user"]["id"]);
-      $query = $db ->prepare(
-        "INSERT INTO Account(amount, opening_date, account_type, user_id)
-        VALUES (:amount,  NOW(), :account_type,:id)"
-    );
-    // execution de la requête avec les valeurs récuoérées par la session et le POST
-    $result = $query->execute([
-        "amount" => $_POST["amount"],
-        "account_type" => $_POST["typeOfAccount"],
-        "id" => $_SESSION["user"]["id"]
-        ]);
+    $created_account = create_account($db, $userID);
     }
 }
 ?>
