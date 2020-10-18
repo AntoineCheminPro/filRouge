@@ -2,13 +2,12 @@
 <?php require_once "data/users.php"; ?>
 <?php require "connexion.php"; ?>
 
-
 <main class="container">
 <!-- set layer -->
-<?php require "layer.php" ?>
+<?php require "template/layer.php" ?>
 <?php 
-setLayer();
 
+setLayer();
 //  if a login form is submitted
 if (!empty ($_POST) && isset($_POST["login"])) {
     // never trust user input -> preparer la requête
@@ -31,25 +30,8 @@ if (!empty ($_POST) && isset($_POST["login"])) {
         }
     }
 }
+
+include "View/loginView.php";
 ?>
-
-<!-- set login form -->
-<div class="offset-4 col-4 margin-auto">
-  <form class="px-4 py-3" method="post">
-    <div class="form-group">
-      <label>Adresse Mail</label>
-      <input type="email" class="form-control" name="email" placeholder="email@exemple.com">
-    </div>
-    <div class="form-group">
-      <label>Mot de passe</label>
-      <input type="password" class="form-control" name="password" placeholder="Mot de passe">
-    </div>
-    <div class="dropdown-divider container"></div>
-      <button type="submit" name="login" class="bg-warning rounded-pill p-2 col-5">Se connecter</button>
-      <button class="bg-warning rounded-pill p-2 col-5" href="#">S'inscrire</button>
-    </div>
-  </form>
-</div>
-
 <?php require "template/footer.php"; ?>
 
