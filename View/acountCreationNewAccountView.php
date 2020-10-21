@@ -2,7 +2,8 @@
 <?php
 
 $userID = $_SESSION["user"]["id"];
-$accountsOwned = get_accounts_types($db, $userID);
+$account = new AccountModel();
+$accountsOwned =$account->get_accounts_types($userID);
 
 if(isset($_POST)&& !empty($_POST)){
     $doublon=false;
@@ -36,7 +37,7 @@ if(isset($_POST)&& !empty($_POST)){
       </article>
       <?php
 
-    $created_account = create_account($db, $userID);
+    $created_account = $account->create_account($userID);
     }
 }
 ?>

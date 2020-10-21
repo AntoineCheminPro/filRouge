@@ -9,68 +9,68 @@ class User {
     protected int $city_code;
     protected string $sex;
     protected string $birth_date;
-    private string $password;
+    protected string $password;
 
     private function setID(int $id):int {
         $this->id =$id;
     }
-    private function getID(int $id):int {
+    private function getID() {
         return $this->id;
     }
 
     private function setID(string $lastname):string {
         $this->lastname=$lastname;
     }
-    private function getID(string $lastname):string {
+    private function getID() {
         return $this->lastname;
     }
 
     private function setFirstname(string $firstname):string {
         $this->firstname=$firstname;
     }
-    private function getFirstname(string $firstname):string {
+    private function getFirstname() {
         return $this->firstname;
     }
 
     private function setEmail(string $email):string {
         $this->email=$email;
     }
-    private function getEmail(string $email):string {
+    private function getEmail() {
         return $this->email;
     }
 
     private function setCity(string $city):string {
         $this->city=$city;
     }
-    private function getCity(string $city):string {
+    private function getCity() {
         return $this->city;
     }
 
     private function setCityCode(int $city_code):int {
         $this->city_code =$city_code;
     }
-    private function getCityCode(int $city_code):int {
+    private function getCityCode() {
         return $this->city_code;
     }
 
     private function setSex(string  $sex):string {
         $this->sex=$sex;
     }
-    private function getSex(string  $sex):string {
+    private function getSex() {
         return $this->sex;
     }
 
     private function setBirthDate(string $birth_date):string {
         $this->birth_date=$birth_date;
     }
-    private function getBirthDate(string $birth_date):string {
+    private function getBirthDate() {
         return $this->birth_date;
     }
 
     private function setPassword(string $password):string {
         $this->password=$password;
     }
-    private function getPassword(string $password):string {
+    private function getPassword(){
         return $this->password;
     }
 

@@ -2,50 +2,51 @@
 
 class Account {
     protected int $id;
-    protected int $amount;
+    protected float $amount;
     protected string $opening_date;
-    protected int $account_type;
+    protected string $account_type;
     protected int $user_id;
 
-    private function setID(int $id):int {
+    public function setId($id) {
         $this->id =$id;
     }
-    private function getID(int $id):int {
+    public function getId() {
         return $this->id;
     }
 
-    private function setAmount(int $amount):int {
+    public function setAmount($amount) {
         $this->amount =$amount;
     }
-    private function getAmount(int $amount):int {
+    public function getAmount() {
         return $this->amount;
     }
 
-    private function setOpeningDate(string $opening_date):string {
+    public function setOpening_date($opening_date) {
         $this->opening_date =$opening_date;
     }
-    private function getOpeningDate(string $opening_date):string {
+    public function getOpening_date() {
         return $this->opening_date;
     }
 
-    private function setAccountType(int $account_type):int {
+    public function setAccount_type($account_type) {
         $this->account_type =$account_type;
     }
-    private function getAccountType(int $account_type):int {
+    public function getAccount_type() {
         return $this->account_type;
     }
 
-    private function setUserID(int $user_id):int {
+    public function setUser_id(int $user_id) {
         $this->user_id =$user_id;
     }
-    private function getUserID(int $user_id):int {
+    public function getUser_id() {
         return $this->user_id;
     }
 
-    public function __construct(array $data):array {
+    public function __construct($data) {
         $this->hydrate($data);
     }
-    private function hydrate(array $data):array {
+
+    private function hydrate($data) {
         foreach ($data as $key => $value) {
             $method = "set" . ucfirst($key);
             if(method_exists($this, $method)) {

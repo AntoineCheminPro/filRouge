@@ -1,7 +1,13 @@
+<?php 
+var_dump($accountOperations);
+var_dump($account);
+
+?>
+
 
   <!-- show the account -->
   <article class="card text-white bg-info my-4 px-0 col-4" style="max-width: 18rem;">
-    <div class="card-header text-center"><?php echo $accountOperations[0]["account_type"]?> <?php echo $_SESSION["user"]["lastname"]. " ".$_SESSION["user"]["firstname"] ?></div>
+    <div class="card-header text-center"><?php echo $accountOperations->getAccount_type()?> <?php echo $_SESSION["user"]["lastname"]. " ".$_SESSION["user"]["firstname"] ?></div>
     <div class="card-header text-center">Numéro : <?php echo $accountOperations[0]["id"]?></div>
     <div class="card-body bg-white">
       <h5 class="card-title text-warning text-center">Solde : <?php echo $accountOperations[0]["sold"] ?> €</h5>

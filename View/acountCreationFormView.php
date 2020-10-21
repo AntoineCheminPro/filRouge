@@ -1,4 +1,4 @@
-?>
+
 <section class="row">
   <form action="" method="post" class="col-8" id="createAccount" name="createAccount">
     <div class="form-row">

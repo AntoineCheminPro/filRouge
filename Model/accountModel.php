@@ -1,74 +1,83 @@
-<?php require "connexion.php"; ?>
 <?php
-
-function get_accounts (PDO $db, array $user):array{
-// load user accounts from DB
-  $query = $db -> prepare(
-    "SELECT * 
-      FROM User AS u
-      INNER JOIN Account AS a
-      ON u.id = a.user_id
-      WHERE u.id = :user_id
-  ");
-  $query -> execute([
-  "user_id" => $user["id"]
-  ]);
-// Extract data from query as an associative array
-return $query -> fetchAll(PDO::FETCH_ASSOC);
-}
-
-function get_single_account (PDO $db, int $accountID, $user):array{
-// load selected account from db
-  $query = $db -> prepare(
-      "SELECT a.id as id, a.amount as sold, o.id as operation_id, o.operation_type, a.account_type, o.amount, o.label 
-        FROM Account AS a
-        LEFT JOIN Operation AS o
-        ON a.id = o.account_id
-        WHERE a.id = :account_id
-        AND a.user_id = :user_id
-  ");
-  $query -> execute ([
-    "account_id" => $accountID,
+require "DBManager.php";
+require "Model/entities/accountClass.php";
+class AccountModel extends DBManager
+{
+   
+  function get_accounts (array $user):array{
+  // load user accounts from DB
+    $query = $this->getDB()->prepare(
+      "SELECT * 
+        FROM Account
+        WHERE user_id = :user_id
+    ");
+    $query -> execute([
     "user_id" => $user["id"]
     ]);
-// Extract data from query as an associative array (fetch quand 1 seul, renvoi un tableau associatif et non pas un tableau dans un tableau)
-  return $query -> fetchAll(PDO::FETCH_ASSOC);
-}
+  // Extract data from query as an associative array
+  $accounts =$query -> fetchAll(PDO::FETCH_ASSOC);
+    //On transforme alors chaque entrée du tableau en objet account en l'hydratant
+    // ce qui permet de passer les valeurs aux setter (verifications)
+   
+    foreach ($accounts as $key => $account) {
+      $accounts[$key] = new account($account);
+    }
+  return $accounts;
+  }
 
-function get_accounts_types(PDO $db, int $userID){
-  $query = $db ->prepare(
-    "SELECT account_type
-    FROM Account
-    WHERE user_id = :user_id
-    AND account_type IN ('Livret A', 'Livret B', 'P E L', 'P E A', 'P E R')
-    "
-  );
-  $query -> execute([
-    "user_id" => $userID
-  ]);
-  return $query -> fetchAll(PDO::FETCH_ASSOC);
-}
+  function get_single_account (int $accountID, $user){
+  // load selected account from db
+    $query = $this->getDB() -> prepare(
+        "SELECT *
+          FROM Account
+          WHERE id = :account_id
+          AND a.user_id = :user_id
+    ");
+    $query -> execute ([
+      "account_id" => $accountID,
+      "user_id" => $user["id"]
+      ]);
+  // Extract data from query as an associative array (fetch quand 1 seul, renvoi un tableau associatif et non pas un tableau dans un tableau)
+    $query -> fetchAll(PDO::FETCH_ASSOC);  
+    $account = new Account($query);
+    return $account;
+  }
 
-function create_account(PDO $db, int $userID):array{
-  $query = $db ->prepare(
-    "INSERT INTO Account(amount, opening_date, account_type, user_id)
-    VALUES (:amount,  NOW(), :account_type,:id)"
-  );
-  $result = $query->execute([
-    "amount" => $_POST["amount"],
-    "account_type" => $_POST["typeOfAccount"],
-    "id" => $_SESSION["user"]["id"]
-  ]);
-  return $query -> fetchAll(PDO::FETCH_ASSOC);
-}
-
-function suppress_account (PDO $db, int $accountID){
-  $query = $db ->prepare(
-    "DELETE FROM Account
-    WHERE id = :account_id
-  ");
-  $result = $query->execute([
-    "account_id" => $accountID
+  function get_accounts_types(int $userID){
+    $query = $this->getDB() ->prepare(
+      "SELECT account_type
+      FROM Account
+      WHERE user_id = :user_id
+      AND account_type IN ('Livret A', 'Livret B', 'P E L', 'P E A', 'P E R')
+      "
+    );
+    $query -> execute([
+      "user_id" => $userID
     ]);
+    return $query -> fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  function create_account(int $userID):array{
+    $query = $this->getDB() ->prepare(
+      "INSERT INTO Account(amount, opening_date, account_type, user_id)
+      VALUES (:amount,  NOW(), :account_type,:id)"
+    );
+    $result = $query->execute([
+      "amount" => $_POST["amount"],
+      "account_type" => $_POST["typeOfAccount"],
+      "id" => $_SESSION["user"]["id"]
+    ]);
+    return $query -> fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  function suppress_account (int $accountID){
+    $query = $this->getDB() ->prepare(
+      "DELETE FROM Account
+      WHERE id = :account_id
+    ");
+    $result = $query->execute([
+      "account_id" => $accountID
+      ]);
+  }
 }
-?>
+  ?>
