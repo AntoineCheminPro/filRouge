@@ -1,5 +1,5 @@
 <?php require "template/header.php"; ?>
-<?php require_once "data/users.php"; ?>
+<!-- <?php require_once "data/users.php"; ?> -->
 <?php require "connexion.php"; ?>
 
 <main class="container">

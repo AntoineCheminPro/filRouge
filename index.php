@@ -1,6 +1,5 @@
 <?php require "session.php"; ?>
 <?php require "connexion.php"; ?>
-<?php require_once "data/users.php"; ?>
 <?php require "Model/accountModel.php"; ?>
 <!-- template -->
 <?php require "template/nav.php"; ?>

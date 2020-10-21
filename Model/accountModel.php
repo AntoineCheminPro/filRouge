@@ -1,7 +1,7 @@
 <?php require "connexion.php"; ?>
 <?php
 
-function get_accounts (PDO $db, array $user){
+function get_accounts (PDO $db, array $user):array{
 // load user accounts from DB
   $query = $db -> prepare(
     "SELECT * 
@@ -17,7 +17,7 @@ function get_accounts (PDO $db, array $user){
 return $query -> fetchAll(PDO::FETCH_ASSOC);
 }
 
-function get_single_account (PDO $db, int $accountID, $user){
+function get_single_account (PDO $db, int $accountID, $user):array{
 // load selected account from db
   $query = $db -> prepare(
       "SELECT a.id as id, a.amount as sold, o.id as operation_id, o.operation_type, a.account_type, o.amount, o.label 
@@ -49,7 +49,7 @@ function get_accounts_types(PDO $db, int $userID){
   return $query -> fetchAll(PDO::FETCH_ASSOC);
 }
 
-function create_account(PDO $db, int $userID){
+function create_account(PDO $db, int $userID):array{
   $query = $db ->prepare(
     "INSERT INTO Account(amount, opening_date, account_type, user_id)
     VALUES (:amount,  NOW(), :account_type,:id)"
@@ -62,7 +62,7 @@ function create_account(PDO $db, int $userID){
   return $query -> fetchAll(PDO::FETCH_ASSOC);
 }
 
-function suppressAccount (PDO $db, int $accountID){
+function suppress_account (PDO $db, int $accountID){
   $query = $db ->prepare(
     "DELETE FROM Account
     WHERE id = :account_id

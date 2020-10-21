@@ -21,7 +21,7 @@ else{
   }
 
 if (isset($_POST["suppressAccount"]) && !empty($_POST)){
-  suppressAccount($db, intval($accountOperations[0]["id"]));
+  suppress_account($db, intval($accountOperations[0]["id"]));
   header("Location: index.php");
   exit();
 }
