@@ -1,17 +1,17 @@
 <?php
 class Operation {
 
-    protected int $id;
+    protected ?int $id;
     protected string $operation_type;
     protected int $amount;
     protected string $registred; // date of operation registration
     protected string $label;
     protected int $account_id;
 
-    public function __construct(array $data):array {
+    public function __construct(array $data) {
         $this->hydrate($data);
       }
-    private function hydrate(array $data):array {
+    private function hydrate(array $data) {
         foreach ($data as $key => $value) {
             $method = "set" . ucfirst($key);
             if(method_exists($this, $method)) {
@@ -20,45 +20,45 @@ class Operation {
         }
     }
 
-    private function setID(int $id):int {
+    private function setId(int $id) {
         $this->id =$id;
     }
-    private function getID(int $id):int {
+    public function getId() {
         return $this->id;
     }
 
-    private function setOperationType(string $operation_type):string {
+    private function setOperation_type(string $operation_type) {
         $this->operation_type =$operation_type;
     }
-    private function getOperationType(string $operation_type):string {
+    public function getOperation_type() {
         return $this->operation_type;
     }
 
-    private function setAmount(int $amount):int {
+    private function setAmount(int $amount) {
         $this->amount =$amount;
     }
-    private function getAmount(int $amount):int {
+    public function getAmount() {
         return $this->amount;
     }
 
-    private function setRegistred(string $registred):string {
+    private function setRegistred(string $registred) {
         $this->registred =$registred;
     }
-    private function getRegistred(string $registred):string {
+    public function getRegistred() {
         return $this->registred;
     }
 
-    private function setLabel(string $label):string {
+    private function setLabel(string $label) {
         $this->label =$label;
     }
-    private function getLabel(string $label):string {
+    public function getLabel() {
         return $this->label;
     }
 
-    private function setAccountID(int $account_id):int {
+    private function setAccount_id(int $account_id) {
         $this->account_id =$account_id;
     }
-    private function getAccountID(int $account_id):int {
+    private function getAccount_id() {
         return $this->account_id;
     }
   

@@ -1,11 +1,11 @@
 <?php
 
 class Account {
-    protected int $id;
-    protected float $amount;
-    protected string $opening_date;
-    protected string $account_type;
-    protected int $user_id;
+    public int $id;
+    public float $amount;
+    public string $opening_date;
+    public string $account_type;
+    public int $user_id;
 
     public function setId($id) {
         $this->id =$id;
@@ -35,7 +35,7 @@ class Account {
         return $this->account_type;
     }
 
-    public function setUser_id(int $user_id) {
+    public function setUser_id($user_id) {
         $this->user_id =$user_id;
     }
     public function getUser_id() {
@@ -43,6 +43,7 @@ class Account {
     }
 
     public function __construct($data) {
+        // var_dump($data);
         $this->hydrate($data);
     }
 

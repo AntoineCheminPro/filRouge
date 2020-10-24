@@ -1,5 +1,5 @@
 <?php require "template/header.php"; ?>
-<?php require "connexion.php"; ?>
+
 <?php require "Model/userModel.php"; ?>
 
 <main class="container">
@@ -11,10 +11,9 @@
 
 setLayer();
 $userModel = new UserModel();
-$user = $userModel->checkEmail(htmlspecialchars($_POST['email']));
 // //  if a login form is submitted
 if (!empty ($_POST) && isset($_POST["password"])) {
-    
+    $user = $userModel->checkEmail(htmlspecialchars($_POST['email']));
     if ($user) {
         // if an user has been found
         if(password_verify($_POST['password'], $user['password'])){

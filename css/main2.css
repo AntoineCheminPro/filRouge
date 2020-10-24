@@ -89,6 +89,7 @@ textarea {
    body{
      position: relative;
      z-index: 10;
+     background-color: #E8E9ED;
    }
 
    main{
