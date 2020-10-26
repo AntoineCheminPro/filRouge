@@ -29,15 +29,14 @@
 
 <body>
 
-<?php require "template/nav.php"; ?>
 
-  <header class="jumbotron jumbotron-fluid text-white bg-info container mb-0 border-bottom p-4">
-    <div class="container row">
-      <div><h1 class="display-4">La Banque Normande</h1>
-        <p class="lead">La banque qui mets vos sous de côté !</p>
-      </div>
-      <div class="offset-4 col-2">      
-        <img class="logo" src="img/kisspng-piggy-bank-money-pink-pig-piggy-bank-5a8c8e98350f61.2626275715191609842173.png" alt="">
-      </div>  
+<header class="jumbotron jumbotron-fluid text-white bg-info container mb-0 border-bottom p-4">
+  <div class="container row">
+    <div><h1 class="display-4">La Banque Normande</h1>
+      <p class="lead ">La banque qui mets vos sous de côté !</p>
     </div>
-  </header>
+    <div class="offset-4 col-2">      
+      <img class="logo" src="img/kisspng-piggy-bank-money-pink-pig-piggy-bank-5a8c8e98350f61.2626275715191609842173.png" alt="">
+    </div>  
+  </div>
+</header>
