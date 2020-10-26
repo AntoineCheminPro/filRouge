@@ -7,7 +7,7 @@
     <div class="justify-content-between" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-secondary" href="index.php">Acceuil</a>
+          <a class="nav-link text-secondary" href="index.php">Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-secondary" href="acountcreation.php">Création de compte</a>
