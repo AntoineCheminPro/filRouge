@@ -4,7 +4,7 @@ require_once "Model/entities/accountClass.php";
 
 class AccountModel extends DBManager
 {
-  function get_accounts (array $user):array{
+  function get_accounts (user $user){
   // load user accounts from DB
     $query = $this->getDB()->prepare(
       "SELECT * 
@@ -12,7 +12,7 @@ class AccountModel extends DBManager
         WHERE user_id = :user_id
     ");
     $query -> execute([
-    "user_id" => $user["id"]
+    "user_id" => $user->getId()
     ]);
   // Extract data from query as an associative array
   $accounts =$query -> fetchAll(PDO::FETCH_ASSOC);
@@ -59,27 +59,28 @@ class AccountModel extends DBManager
     return $query -> fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function create_account(int $userID):array{
-    $query = $this->getDB() ->prepare(
+  function create_account(account $account):bool{
+    $query = $this->getDB()->prepare(
       "INSERT INTO Account(amount, opening_date, account_type, user_id)
-      VALUES (:amount,  NOW(), :account_type,:id)"
+      VALUES (:amount,  NOW(), :account_type,:user_id)"
     );
-    $result = $query->execute([
-      "amount" => $_POST["amount"],
-      "account_type" => $_POST["typeOfAccount"],
-      "id" => $_SESSION["user"]["id"]
+    $result=$query->execute([
+      "amount" => $account->getAmount(),
+      "account_type" => $account->getAccount_type(),
+      "user_id" => $account->getUser_id()
     ]);
-    return $query -> fetchAll(PDO::FETCH_ASSOC);
+    return $result;
   }
 
-  function suppress_account (int $accountID){
+  function suppress_account (account $account){
     $query = $this->getDB() ->prepare(
       "DELETE FROM Account
       WHERE id = :account_id
     ");
     $result = $query->execute([
-      "account_id" => $accountID
+      "account_id" => $account->getId()
       ]);
+      return $result;
   }
 
   function account_deposit($account_id){

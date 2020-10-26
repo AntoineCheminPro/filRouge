@@ -1,11 +1,10 @@
-
 <section class="row">
   <form action="" method="post" class="col-8" id="createAccount" name="createAccount">
     <div class="form-row">
       <div class="form-group col-md-8">
       <p class="mt-3 text-center">Titulaire : <?php echo $_SESSION["user"]["lastname"]. " ".$_SESSION["user"]["firstname"] ?></p>
         <label for="inputState">Type de compte</label>
-        <select id="inputState" class="form-control" name="typeOfAccount">
+        <select id="inputState" class="form-control" name="account_type">
           <option selected>Compte courant</option>
           <option>Compte commun</option>
           <option>Livret A</option>
@@ -23,5 +22,5 @@
     </div>
   </form>
 </section>
-<?php
+
 

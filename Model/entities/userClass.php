@@ -11,73 +11,73 @@ class User {
     protected string $birth_date;
     protected string $password;
 
-    private function setID(int $id):int {
+    private function setId(int $id){
         $this->id =$id;
     }
-    private function getID() {
+    public function getId() {
         return $this->id;
     }
 
-    private function setID(string $lastname):string {
-        $this->lastname=$lastname;
+    private function setLastname(string $lastname) {
+        $this->lastname= htmlspecialchars($lastname);
     }
-    private function getID() {
+    private function getLastname() {
         return $this->lastname;
     }
 
-    private function setFirstname(string $firstname):string {
-        $this->firstname=$firstname;
+    private function setFirstname(string $firstname) {
+        $this->firstname=htmlspecialchars($firstname);
     }
     private function getFirstname() {
         return $this->firstname;
     }
 
-    private function setEmail(string $email):string {
+    private function setEmail(string $email) {
         $this->email=$email;
     }
-    private function getEmail() {
+    public function getEmail() {
         return $this->email;
     }
 
-    private function setCity(string $city):string {
-        $this->city=$city;
+    private function setCity(string $city) {
+        $this->city=htmlspecialchars($city);
     }
-    private function getCity() {
+    public function getCity() {
         return $this->city;
     }
 
-    private function setCityCode(int $city_code):int {
-        $this->city_code =$city_code;
+    private function setCityCode(int $city_code) {
+        $this->city_code =htmlspecialchars($city_code);
     }
-    private function getCityCode() {
+    public function getCityCode() {
         return $this->city_code;
     }
 
-    private function setSex(string  $sex):string {
-        $this->sex=$sex;
+    private function setSex(string  $sex) {
+        $this->sex=htmlspecialchars($sex);
     }
-    private function getSex() {
+    public function getSex() {
         return $this->sex;
     }
 
-    private function setBirthDate(string $birth_date):string {
+    private function setBirthDate(string $birth_date) {
         $this->birth_date=$birth_date;
     }
-    private function getBirthDate() {
+    public function getBirthDate() {
         return $this->birth_date;
     }
 
-    private function setPassword(string $password):string {
+    private function setPassword(string $password) {
         $this->password=$password;
     }
-    private function getPassword(){
+    public function getPassword(){
         return $this->password;
     }
 
-    public function __construct(array $data):array {
+    public function __construct($data) {
         $this->hydrate($data);
     }
-    private function hydrate(array $data):array {
+    private function hydrate(array $data) {
         foreach ($data as $key => $value) {
           $method = "set" . ucfirst($key);
           if(method_exists($this, $method)) {

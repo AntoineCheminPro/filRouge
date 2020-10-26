@@ -25,7 +25,7 @@ else{
   }
 
 if (isset($_POST["suppressAccount"]) && !empty($_POST)){
-  $accounts->suppress_account(intval($account->getId()));
+  $accounts->suppress_account($account);
   header("Location: index.php");
   exit();
 }

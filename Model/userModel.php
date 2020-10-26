@@ -16,6 +16,20 @@ class UserModel extends DBManager {
         return $user;
     }
 
+    public function getUser(int $userID):user{
+        $query = $this->getDB()->prepare(
+            "SELECT *
+            FROM User
+            WHERE id = :id"
+        );
+        $query->execute([
+            "id" => $userID
+        ]);
+        $user = $query ->fetch (PDO::FETCH_ASSOC);
+        $user = new user($user);
+        return $user;
+    }
+
 
 
     public function newUser(user $user):bool{
