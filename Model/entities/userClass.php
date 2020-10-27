@@ -84,5 +84,5 @@ class User {
             $this->$method(htmlspecialchars($value));
           }
         }
-      }
+    }
 }
